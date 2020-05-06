@@ -12,18 +12,25 @@ function calculateGame(playerInput) {
 }
 
 function generateComputerInput() {
-  let randomChoice = Math.floor(Math.random() * 3 + 1);
+  let randomChoice = Math.floor(Math.random() * 5 + 1);
   console.log(randomChoice);
   let computerInput = "";
   if (randomChoice == 1) {
     computerInput = "Rock";
   } else if (randomChoice == 2) {
     computerInput = "Paper";
-  } else {
+  } else if (randomChoice == 3) {
     computerInput = "Scissors";
+  } else if (randomChoice == 4) {
+    computerInput = "Spock";
+  } else {
+    computerInput = "Lizard";
   }
   return computerInput;
 }
+
+// Spock beats scissors and rock
+// scissors beats lizard and paper
 
 function compareInputs(playerInput, computerInput) {
   let gameOutcome = {};
@@ -31,9 +38,16 @@ function compareInputs(playerInput, computerInput) {
   gameOutcome.computerInput = computerInput;
 
   if (
-    (playerInput == "Rock" && computerInput == "Scissors") ||
-    (playerInput == "Paper" && computerInput == "Rock") ||
-    (playerInput == "Scissors" && computerInput == "Paper")
+    (playerInput == "Rock" &&
+      (computerInput == "Scissors" || computerInput == "Lizard")) ||
+    (playerInput == "Paper" &&
+      (computerInput == "Rock" || computerInput == "Spock")) ||
+    (playerInput == "Scissors" &&
+      (computerInput == "Paper" || computerInput == "Lizard")) ||
+    (playerInput == "Spock" &&
+      (computerInput == "Scissors" || computerInput == "Rock")) ||
+    (playerInput == "Lizard" &&
+      (computerInput == "Spock" || computerInput == "Paper"))
   ) {
     gameOutcome.winner = "Player";
   } else if (playerInput == computerInput) {
@@ -74,8 +88,12 @@ function postImage(input, player) {
     imageAttribute.src = "rock.jpg";
   } else if (input == "Paper") {
     imageAttribute.src = "paper.jpg";
-  } else {
+  } else if (input == "Scissors") {
     imageAttribute.src = "scissors.jpg";
+  } else if (input == "Spock") {
+    imageAttribute.src = "spock.jpg";
+  } else {
+    imageAttribute.src = "lizard.jpg";
   }
 }
 
