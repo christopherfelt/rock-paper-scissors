@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="h-100 text-center">
+      <h1 class="align-middle p-2">Rock Paper Scissors</h1>
+    </header>
+    <main class="container-fluid">
+      <div class="row d-flex justify-content-center h-100">
+        <div class="col-sm-9 align-self-center">
+          <div class="card">
+            <div class="card-body">
+              <div class="row d-flex justify-content-between text-center">
+                <div class="col-sm-3">
+                  <div class="card">
+                    <img
+                      id="playerImage"
+                      class="card-img-top"
+                      src="fist.jpg"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h4 id="player-card-title" class="card-title"></h4>
+                    </div>
+                    <div class="text-center pb-2">
+                      <button class="btn btn-primary" onclick="play('Rock')">
+                        <i class="fas fa-hand-rock fa-2x"></i>
+                      </button>
+                      <button class="btn btn-primary" onclick="play('Paper')">
+                        <i class="fas fa-hand-paper fa-2x"></i>
+                      </button>
+                      <button
+                        class="btn btn-primary"
+                        onclick="play('Scissors')"
+                      >
+                        <i class="fas fa-hand-scissors fa-2x"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3 align-self-center">
+                  <div class="card game-card">
+                    <div class="card-body">
+                      <h4 id="game-card-title" class="card-title text-center">
+                        Click button to start playing!
+                      </h4>
+                      <div id="left-arrow" class="d-inline float-left">
+                        <i class="fas fa-arrow-left fa-2x"></i>
+                      </div>
+                      <div id="tie-icon" class="d-inline mx-2">
+                        <i class="fab fa-black-tie fa-2x"></i>
+                      </div>
+                      <div id="right-arrow" class="d-inline float-right">
+                        <i class="fas fa-arrow-right fa-2x"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3 align-self-center">
+                  <div class="card">
+                    <img
+                      id="computerImage"
+                      class="card-img-top"
+                      src="hand-cropped.jpg"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h4 id="computer-card-title" class="card-title"></h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.1.1/js/all.js"
+      integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a"
+      crossorigin="anonymous"
+    ></script>
+    <script src="app.js"></script>
+  </body>
+</html>
