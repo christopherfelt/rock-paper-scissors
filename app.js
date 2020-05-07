@@ -1,15 +1,27 @@
-// TODO Steps
-// Have the buttons change the text on the player-card-title
+/**
+ * Given player input, performes entire game sequence
+ * @param {string} playerInput
+ */
+
 function play(playerInput) {
   let gameOutcome = calculateGame(playerInput);
   drawGame(gameOutcome);
 }
 
+/**
+ * Given the player input, calculates the game interaction between computer and player
+ * @param {string} playerInput
+ */
+
 function calculateGame(playerInput) {
   let computerInput = generateComputerInput();
   let gameOutcome = compareInputs(playerInput, computerInput);
-  return gameOutcome; // returns results of comparison object
+  return gameOutcome;
 }
+
+/**
+ * Generates computer's choice
+ */
 
 function generateComputerInput() {
   let randomChoice = Math.floor(Math.random() * 5 + 1);
@@ -28,9 +40,6 @@ function generateComputerInput() {
   }
   return computerInput;
 }
-
-// Spock beats scissors and rock
-// scissors beats lizard and paper
 
 function compareInputs(playerInput, computerInput) {
   let gameOutcome = {};
@@ -63,6 +72,8 @@ function drawGame(gameOutcome) {
   postChoice(gameOutcome.computerInput, false);
   postImage(gameOutcome.playerInput, true);
   postImage(gameOutcome.computerInput, false);
+  postActionText(gameOutcome);
+  changeActionTextColor(gameOutcome.winner);
   changeArrowColor(gameOutcome.winner);
   winScreen(gameOutcome.winner);
 }
@@ -94,6 +105,52 @@ function postImage(input, player) {
     imageAttribute.src = "spock.jpg";
   } else {
     imageAttribute.src = "lizard.jpg";
+  }
+}
+
+function postActionText(gameOutcome) {
+  let choiceArray = [gameOutcome.playerInput, gameOutcome.computerInput];
+  let actionTextElem = document.getElementById("action-text");
+
+  if (choiceArray.includes("Scissors") && choiceArray.includes("Paper")) {
+    actionTextElem.innerText = "Scissors cuts Paper";
+  } else if (
+    choiceArray.includes("Scissors") &&
+    choiceArray.includes("Lizard")
+  ) {
+    actionTextElem.innerText = "Scissor decapitates lizard";
+  } else if (choiceArray.includes("Paper") && choiceArray.includes("Spock")) {
+    actionTextElem.innerText = "Paper disproves Spock";
+  } else if (choiceArray.includes("Paper") && choiceArray.includes("Rock")) {
+    actionTextElem.innerText = "Paper covers Rock";
+  } else if (choiceArray.includes("Rock") && choiceArray.includes("Scissors")) {
+    actionTextElem.innerText = "Rock crushes Scissors";
+  } else if (choiceArray.includes("Rock") && choiceArray.includes("Lizard")) {
+    actionTextElem.innerText = "Rock crushes Lizard";
+  } else if (choiceArray.includes("Lizard") && choiceArray.includes("Paper")) {
+    actionTextElem.innerText = "Lizard eats Paper";
+  } else if (choiceArray.includes("Lizard") && choiceArray.includes("Spock")) {
+    actionTextElem.innerText = "Lizard poisons Spock";
+  } else if (
+    choiceArray.includes("Spock") &&
+    choiceArray.includes("Scissors")
+  ) {
+    actionTextElem.innerText = "Spock smashes Scissors";
+  } else if (choiceArray.includes("Spock") && choiceArray.includes("Rock")) {
+    actionTextElem.innerText = "Spock vaporizes Rock";
+  } else {
+    actionTextElem.innerText = "  ";
+  }
+}
+
+function changeActionTextColor(winner) {
+  let actionTextElem = document.getElementById("action-text");
+  if (winner == "Player") {
+    actionTextElem.style.color = "green";
+  } else if (winner == "Tie") {
+    actionTextElem.style.color = "yellow";
+  } else {
+    actionTextElem.style.color = "red";
   }
 }
 
